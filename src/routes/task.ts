@@ -13,7 +13,7 @@ const router = Router();
 
 /**
  * @swagger
- * /api/v1/task:
+ * /api/v1/tasks:
  *   post:
  *     summary: Create a new task
  *     tags: [Task]
@@ -36,11 +36,11 @@ const router = Router();
  *       400:
  *         description: Bad request.
  */
-router.post("/api/v1/task",authenticateToken, postTask);
+router.post("/api/v1/tasks",authenticateToken, postTask);
 
 /**
  * @swagger
- * /api/v1/task/{id}:
+ * /api/v1/tasks/{id}:
  *   delete:
  *     summary: Delete a task
  *     tags: [Task]
@@ -57,11 +57,11 @@ router.post("/api/v1/task",authenticateToken, postTask);
  *       404:
  *         description: Task not found.
  */
-router.delete("/api/v1/task/:id",authenticateToken, deleteTask);
+router.delete("/api/v1/tasks/:id",authenticateToken, deleteTask);
 
 /**
  * @swagger
- * /api/v1/task:
+ * /api/v1/tasks:
  *   get:
  *     summary: Get tasks by user ID
  *     tags: [Task]
@@ -102,11 +102,11 @@ router.delete("/api/v1/task/:id",authenticateToken, deleteTask);
  *       400:
  *         description: Missing userId parameter.
  */
-router.get("/api/v1/task",authenticateToken, getTaskByUserId);
+router.get("/api/v1/tasks",authenticateToken, getTaskByUserId);
 
 /**
  * @swagger
- * /api/v1/task/{id}:
+ * /api/v1/tasks/{id}:
  *   put:
  *     summary: Update a task
  *     tags: [Task]
@@ -142,6 +142,6 @@ router.get("/api/v1/task",authenticateToken, getTaskByUserId);
  *       404:
  *         description: Task not found.
  */
-router.put("/api/v1/task/:id",authenticateToken, updateTask);
+router.put("/api/v1/tasks/:id",authenticateToken, updateTask);
 
 export default router;
