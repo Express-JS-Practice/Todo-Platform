@@ -14,6 +14,7 @@ export const register: RequestHandler = async (req:Request, res:Response) => {
         res.status(400).json({
             msg:`Ya existe el correo`
         })
+        return
     }
 
     const passwordHash = await bcrypt.hash(password,10)
