@@ -31,9 +31,10 @@ export const getTaskByUserId  = async (req:Request,res:Response)=>{
 
 export const updateTask = async (req:Request,res:Response)=>{
     const authenticatedReq = req as AuthenticatedRequest;
-    const userId = authenticatedReq.userId
-    const {id} = req.params
-    if  (userId !== Number(id)){
+    const userId = authenticatedReq.userId;
+    const {id} = req.params;
+    const task: any = await Task.findOne({where:{id:id}});
+    if  (userId !== Number(task.userId)){
         res.status(403).json({
             msg:`No tienes permisos para actualizar la tarea con id ${id}`
         })
@@ -54,7 +55,8 @@ export const deleteTask = async (req:Request,res:Response)=>{
     const authenticatedReq = req as AuthenticatedRequest
     const userId = authenticatedReq.userId
     const {id} = req.params
-    if  (userId !== Number(id)){
+    const task: any = await Task.findOne({where:{id:id}})
+    if  (userId !== Number(task.userId)){
         res.status(403).json({
             msg:`No tienes permisos para eliminar la tarea con id ${id}`
         })
